@@ -1,0 +1,19 @@
+.button {
+    padding: 8px 16px;
+}
+
+.primary {
+    background-color: aquamarine;
+}
+
+.primary:hover {
+    background-color: #98ffd7;
+}
+
+.secondary {
+    background-color: blanchedalmond;
+}
+
+.secondary:hover {
+    background-color: bisque;
+}

@@ -1,0 +1,38 @@
+.header {
+  height: 50px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 1px 1px #d3d5d8;
+}
+
+.actions,
+.search {
+
+  gap: 12px;
+}
+
+.hero,
+.actions {
+  display: flex;
+  align-items: center;
+  flex: 0 0 250px;
+}
+
+.hero {
+  justify-content: start;
+}
+
+.actions {
+  justify-content: end;
+}
+
+.logo {
+  width: 50px;
+}
+
+.search {
+  display: flex;
+  flex: 1 1 auto;
+}

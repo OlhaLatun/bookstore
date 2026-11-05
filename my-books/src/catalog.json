@@ -1,0 +1,22 @@
+[
+    {
+        "id": 0,
+        "name": "Book1",
+        "author": "John Doe",
+        "description": "",
+        "image_url": "",
+        "rating": {
+            "average": 5,
+            "totalVotes": 123
+        },
+        "available": true,
+        "category": {
+            "id": 0,
+            "displayName": "fiction"
+        },
+        "price": {
+            "value": 200,
+            "currency": "UAH"
+        }
+    }
+]
