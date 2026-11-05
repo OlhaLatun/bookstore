@@ -1,10 +1,12 @@
 const express = require('express');
 const http = require('http');
+const config = require('./config/env');
+const logger = require('./config/logger');
 
 const app = express();
 const router = express.Router();
 
-const PORT = 3000;
+const { PORT, NODE_ENV } = config;
 
 router.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET');
@@ -12,7 +14,10 @@ router.use((req, res, next) => {
 })
 
 router.get('/health', (req, res) => {
-    res.status(200).send("Ok");
+    res.status(200).json({
+        status: 'Ok',
+        environment: NODE_ENV
+    })
 })
 
 app.use('/api/v1', router)
@@ -20,5 +25,6 @@ app.use('/api/v1', router)
 const server = http.createServer(app);
 
 server.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`)
+    logger.info(`Environment: ${NODE_ENV}`);
+    logger.info(`Server listening on port ${PORT}`);
 })
