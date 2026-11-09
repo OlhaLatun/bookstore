@@ -21,6 +21,9 @@ router.get('/health', (req, res) => {
 })
 
 app.use('/api/v1', router)
+app.use(express.json())
+
+require('../swagger')(app);
 
 const server = http.createServer(app);
 

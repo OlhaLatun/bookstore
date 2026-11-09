@@ -1,0 +1,598 @@
+openapi: 3.0.3
+
+info:
+  title: Bookstore API
+  version: 1.0.0
+  description: API for managing books, authors, and categories in a bookstore.
+
+servers:
+  - url: http://localhost:3000/api/v1
+    description: Local development server
+
+tags:
+  - name: Books
+    description: Operations for managing books
+  - name: Authors
+    description: Operations for managing authors
+  - name: Categories
+    description: Operations for managing book categories
+
+paths:
+
+  # BOOKS
+
+  /books:
+    get:
+      tags:
+        - Books
+      summary: List all books
+      description: Retrieves books with optional filtering and pagination.
+      parameters:
+        - name: category
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter books by category name.
+          example: fiction
+
+        - name: authorId
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Filter books by author ID.
+
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 20
+
+      responses:
+        "200":
+          description: Books retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Book'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "500":
+          $ref: '#/components/responses/ServerError'
+
+    post:
+      tags:
+        - Books
+      summary: Create a book
+      description: Adds a new book to the bookstore.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookInput'
+      responses:
+        "201":
+          description: New book successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          description: Author or category not found.
+        "409":
+          description: Book already exists.
+        "500":
+          $ref: '#/components/responses/ServerError'
+
+  /books/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+
+    get:
+      tags:
+        - Books
+      summary: Get a book by ID
+      responses:
+        "200":
+          description: Book retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        "404":
+          $ref: '#/components/responses/NotFound'
+        "500":
+          $ref: '#/components/responses/ServerError'
+
+    patch:
+      tags:
+        - Books
+      summary: Update a book
+      description: Partially updates an existing book.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookUpdate'
+      responses:
+        "200":
+          description: Book successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+        "500":
+          $ref: '#/components/responses/ServerError'
+
+    delete:
+      tags:
+        - Books
+      summary: Delete a book
+      responses:
+        "204":
+          description: Book successfully deleted.
+        "404":
+          $ref: '#/components/responses/NotFound'
+        "500":
+          $ref: '#/components/responses/ServerError'
+
+  # AUTHORS
+
+  /authors:
+    get:
+      tags:
+        - Authors
+      summary: List all authors
+      responses:
+        "200":
+          description: Authors retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+        "500":
+          $ref: '#/components/responses/ServerError'
+
+    post:
+      tags:
+        - Authors
+      summary: Create an author
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorInput'
+      responses:
+        "201":
+          description: Author successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "500":
+          $ref: '#/components/responses/ServerError'
+
+  /authors/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+
+    get:
+      tags:
+        - Authors
+      summary: Get an author by ID
+      responses:
+        "200":
+          description: Author retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      tags:
+        - Authors
+      summary: Update an author
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorUpdate'
+      responses:
+        "200":
+          description: Author successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Authors
+      summary: Delete an author
+      responses:
+        "204":
+          description: Author successfully deleted.
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+  /authors/{id}/books:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+
+    get:
+      tags:
+        - Authors
+      summary: Get all books by an author
+      responses:
+        "200":
+          description: Author's books retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+  /authors/{id}/books/{bookId}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+      - name: bookId
+        in: path
+        required: true
+        schema:
+          type: integer
+
+    get:
+      tags:
+        - Books
+      summary: Get a specific book by an author
+      responses:
+        "200":
+          description: Book retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+  # CATEGORIES
+
+  /categories:
+    get:
+      tags:
+        - Categories
+      summary: List all categories
+      responses:
+        "200":
+          description: Categories retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+
+    post:
+      tags:
+        - Categories
+      summary: Create a category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryInput'
+      responses:
+        "201":
+          description: Category successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        "400":
+          $ref: '#/components/responses/BadRequest'
+        "409":
+          description: Category already exists.
+
+  /categories/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+
+    get:
+      tags:
+        - Categories
+      summary: Get a category by ID
+      responses:
+        "200":
+          description: Category retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+    patch:
+      tags:
+        - Categories
+      summary: Update a category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryUpdate'
+      responses:
+        "200":
+          description: Category successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        "404":
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - Categories
+      summary: Delete a category
+      responses:
+        "204":
+          description: Category successfully deleted.
+        "404":
+          $ref: '#/components/responses/NotFound'
+        "409":
+          description: Category is assigned to existing books.
+
+components:
+
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: Unique resource identifier.
+      schema:
+        type: integer
+        minimum: 1
+
+  schemas:
+
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: The Hobbit
+        description:
+          type: string
+          example: A fantasy adventure.
+        authorId:
+          type: integer
+          example: 1
+        categoryId:
+          type: integer
+          example: 2
+        price:
+          type: number
+          format: float
+          minimum: 0
+          example: 19.99
+        publishedYear:
+          type: integer
+          example: 1937
+      required:
+        - id
+        - title
+        - authorId
+        - categoryId
+        - price
+
+    BookInput:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+        description:
+          type: string
+        authorId:
+          type: integer
+        categoryId:
+          type: integer
+        price:
+          type: number
+          minimum: 0
+        publishedYear:
+          type: integer
+      required:
+        - title
+        - authorId
+        - categoryId
+        - price
+
+    BookUpdate:
+      type: object
+      minProperties: 1
+      properties:
+        title:
+          type: string
+          minLength: 1
+        description:
+          type: string
+        authorId:
+          type: integer
+        categoryId:
+          type: integer
+        price:
+          type: number
+          minimum: 0
+        publishedYear:
+          type: integer
+
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: J.R.R. Tolkien
+        biography:
+          type: string
+          example: English writer and poet.
+      required:
+        - id
+        - name
+
+    AuthorInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        biography:
+          type: string
+      required:
+        - name
+
+    AuthorUpdate:
+      type: object
+      minProperties: 1
+      properties:
+        name:
+          type: string
+          minLength: 1
+        biography:
+          type: string
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 2
+        name:
+          type: string
+          example: Fiction
+        description:
+          type: string
+          example: Fictional literature.
+      required:
+        - id
+        - name
+
+    CategoryInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+      required:
+        - name
+
+    CategoryUpdate:
+      type: object
+      minProperties: 1
+      properties:
+        name:
+          type: string
+          minLength: 1
+        description:
+          type: string
+
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+          example: 1
+        limit:
+          type: integer
+          example: 20
+        total:
+          type: integer
+          example: 100
+        totalPages:
+          type: integer
+          example: 5
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Resource not found.
+        statusCode:
+          type: integer
+          example: 404
+
+  responses:
+    BadRequest:
+      description: Invalid request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    NotFound:
+      description: Requested resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+    ServerError:
+      description: Internal server error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
