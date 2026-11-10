@@ -14,7 +14,7 @@ router.get('/:bookId', (req, res) => {
 
     if (!book) {
         return res.status(404).json({
-            message: 'Book not found'
+            message: `Book with id: ${req.params.bookId} not found`
         });
     }
 
