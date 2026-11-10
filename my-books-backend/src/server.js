@@ -1,7 +1,11 @@
-const express = require('express');
-const http = require('http');
-const config = require('./config/env');
-const logger = require('./config/logger');
+import express from 'express';
+import http from 'http';
+import config from './config/env.js'
+import logger from './config/logger.js';
+import swagger from '../swagger.js';
+
+// Routes
+import books from './routes/books.js'
 
 const app = express();
 const router = express.Router();
@@ -20,10 +24,12 @@ router.get('/health', (req, res) => {
     })
 })
 
+router.use('/books', books);
+
 app.use('/api/v1', router)
 app.use(express.json())
 
-require('../swagger')(app);
+swagger(app);
 
 const server = http.createServer(app);
 

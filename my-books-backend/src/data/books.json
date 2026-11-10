@@ -1,0 +1,146 @@
+[
+    {
+        "id": 1,
+        "title": "A Moveable Feast",
+        "description": "A memoir by Ernest Hemingway about his experiences as a young writer in Paris during the 1920s.",
+        "authorId": 1,
+        "categoryId": 1,
+        "price": 14.99,
+        "publishedYear": 1964
+    },
+    {
+        "id": 2,
+        "title": "A Farewell to Arms",
+        "description": "A novel about an American ambulance officer serving in the Italian army during World War I and his love affair with a British nurse.",
+        "authorId": 1,
+        "categoryId": 2,
+        "price": 15.99,
+        "publishedYear": 1929
+    },
+    {
+        "id": 3,
+        "title": "The Bell Jar",
+        "description": "A semi-autobiographical novel following Esther Greenwood as she struggles with identity, expectations, and mental health.",
+        "authorId": 2,
+        "categoryId": 2,
+        "price": 13.99,
+        "publishedYear": 1963
+    },
+    {
+        "id": 4,
+        "title": "Butter",
+        "description": "A literary thriller about a journalist investigating a woman accused of murdering men through her cooking.",
+        "authorId": 3,
+        "categoryId": 3,
+        "price": 19.99,
+        "publishedYear": 2017
+    },
+    {
+        "id": 5,
+        "title": "To Kill a Mockingbird",
+        "description": "A classic novel exploring racial injustice, morality, and childhood in the American South.",
+        "authorId": 4,
+        "categoryId": 2,
+        "price": 12.99,
+        "publishedYear": 1960
+    },
+    {
+        "id": 6,
+        "title": "Dune",
+        "description": "A science fiction epic about Paul Atreides, whose family becomes involved in a struggle for control of the desert planet Arrakis.",
+        "authorId": 5,
+        "categoryId": 4,
+        "price": 18.99,
+        "publishedYear": 1965
+    },
+    {
+        "id": 7,
+        "title": "Dune Messiah",
+        "description": "The second novel in the Dune series, following Paul Atreides as emperor and exploring the consequences of his rise to power.",
+        "authorId": 5,
+        "categoryId": 4,
+        "price": 16.99,
+        "publishedYear": 1969
+    },
+    {
+        "id": 8,
+        "title": "Wuthering Heights",
+        "description": "A Gothic novel about the passionate and destructive relationship between Heathcliff and Catherine Earnshaw.",
+        "authorId": 6,
+        "categoryId": 2,
+        "price": 11.99,
+        "publishedYear": 1847
+    },
+    {
+        "id": 9,
+        "title": "A Psalm for the Wild-Built",
+        "description": "The first Monk and Robot novella, following a tea monk who meets a robot searching for the meaning of human needs.",
+        "authorId": 7,
+        "categoryId": 4,
+        "price": 17.99,
+        "publishedYear": 2021
+    },
+    {
+        "id": 10,
+        "title": "A Prayer for the Crown-Shy",
+        "description": "The second Monk and Robot novella, continuing the journey of Sibling Dex and the robot Mosscap.",
+        "authorId": 7,
+        "categoryId": 4,
+        "price": 17.99,
+        "publishedYear": 2022
+    },
+    {
+        "id": 11,
+        "title": "The Courage to Be Disliked",
+        "description": "A philosophical dialogue exploring Adlerian psychology, personal freedom, happiness, and the courage to live authentically.",
+        "authorId": 8,
+        "categoryId": 5,
+        "price": 16.99,
+        "publishedYear": 2013
+    },
+    {
+        "id": 12,
+        "title": "Над Чорним морем",
+        "description": "Роман Івана Нечуя-Левицького про українську інтелігенцію, суспільні ідеали, кохання та життя в Одесі.",
+        "authorId": 9,
+        "categoryId": 2,
+        "price": 8.99,
+        "publishedYear": 1891
+    },
+    {
+        "id": 13,
+        "title": "Танець недоумка",
+        "description": "Науково-фантастичний роман про космічного біолога Гіля, який вирушає в експедицію на загадкову планету Іш-Чель.",
+        "authorId": 10,
+        "categoryId": 4,
+        "price": 13.99,
+        "publishedYear": 2019
+    },
+    {
+        "id": 14,
+        "title": "Swann's Way",
+        "description": "The first volume of In Search of Lost Time, exploring memory, childhood, love, and society in France.",
+        "authorId": 11,
+        "categoryId": 2,
+        "price": 15.99,
+        "publishedYear": 1913
+    },
+    {
+        "id": 15,
+        "title": "Time Shelter",
+        "description": "A novel about a mysterious clinic that recreates past decades for patients suffering from Alzheimer's disease, raising questions about memory and nostalgia.",
+        "authorId": 12,
+        "categoryId": 2,
+        "price": 18.99,
+        "publishedYear": 2020
+    },
+    {
+        "id": 16,
+        "title": "When Nietzsche Wept",
+        "description": "A philosophical novel imagining an encounter between philosopher Friedrich Nietzsche and physician Josef Breuer in nineteenth-century Vienna.",
+        "authorId": 13,
+        "categoryId": 2,
+        "price": 14.99,
+        "publishedYear": 1992
+    }
+]

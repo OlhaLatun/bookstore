@@ -1,9 +1,11 @@
-const path = require('path');
-const dotenv = require('dotenv');
-const { z } = require('zod');
+import path from 'path'
+import dotenv from 'dotenv'
+import { z } from 'zod'
+
+const __dirname = import.meta.dirname;
 
 dotenv.config({
-    path: path.resolve(__dirname, '../../.env')
+    path: path.resolve(__dirname, '../../.env.js')
 });
 
 const envSchema = z.object({
@@ -26,4 +28,4 @@ if (!result.success) {
 }
 
 // Export validated configuration
-module.exports = Object.freeze(result.data);
+export default Object.freeze(result.data);
