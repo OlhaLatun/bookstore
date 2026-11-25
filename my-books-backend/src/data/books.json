@@ -6,7 +6,8 @@
         "authorId": 1,
         "categoryId": 1,
         "price": 14.99,
-        "publishedYear": 1964
+        "publishedYear": 1964,
+        "stockCount": 2
     },
     {
         "id": 2,
@@ -15,7 +16,8 @@
         "authorId": 1,
         "categoryId": 2,
         "price": 15.99,
-        "publishedYear": 1929
+        "publishedYear": 1929,
+        "stockCount": 2
     },
     {
         "id": 3,
@@ -24,7 +26,8 @@
         "authorId": 2,
         "categoryId": 2,
         "price": 13.99,
-        "publishedYear": 1963
+        "publishedYear": 1963,
+        "stockCount": 2
     },
     {
         "id": 4,
@@ -33,7 +36,8 @@
         "authorId": 3,
         "categoryId": 3,
         "price": 19.99,
-        "publishedYear": 2017
+        "publishedYear": 2017,
+        "stockCount": 2
     },
     {
         "id": 5,
@@ -42,7 +46,8 @@
         "authorId": 4,
         "categoryId": 2,
         "price": 12.99,
-        "publishedYear": 1960
+        "publishedYear": 1960,
+        "stockCount": 2
     },
     {
         "id": 6,
@@ -51,7 +56,8 @@
         "authorId": 5,
         "categoryId": 4,
         "price": 18.99,
-        "publishedYear": 1965
+        "publishedYear": 1965,
+        "stockCount": 2
     },
     {
         "id": 7,
@@ -60,7 +66,8 @@
         "authorId": 5,
         "categoryId": 4,
         "price": 16.99,
-        "publishedYear": 1969
+        "publishedYear": 1969,
+        "stockCount": 2
     },
     {
         "id": 8,
@@ -69,7 +76,8 @@
         "authorId": 6,
         "categoryId": 2,
         "price": 11.99,
-        "publishedYear": 1847
+        "publishedYear": 1847,
+        "stockCount": 2
     },
     {
         "id": 9,
@@ -78,7 +86,8 @@
         "authorId": 7,
         "categoryId": 4,
         "price": 17.99,
-        "publishedYear": 2021
+        "publishedYear": 2021,
+        "stockCount": 2
     },
     {
         "id": 10,
@@ -87,7 +96,8 @@
         "authorId": 7,
         "categoryId": 4,
         "price": 17.99,
-        "publishedYear": 2022
+        "publishedYear": 2022,
+        "stockCount": 2
     },
     {
         "id": 11,
@@ -96,7 +106,8 @@
         "authorId": 8,
         "categoryId": 5,
         "price": 16.99,
-        "publishedYear": 2013
+        "publishedYear": 2013,
+        "stockCount": 2
     },
     {
         "id": 12,
@@ -105,7 +116,8 @@
         "authorId": 9,
         "categoryId": 2,
         "price": 8.99,
-        "publishedYear": 1891
+        "publishedYear": 1891,
+        "stockCount": 2
     },
     {
         "id": 13,
@@ -114,7 +126,8 @@
         "authorId": 10,
         "categoryId": 4,
         "price": 13.99,
-        "publishedYear": 2019
+        "publishedYear": 2019,
+        "stockCount": 2
     },
     {
         "id": 14,
@@ -123,7 +136,8 @@
         "authorId": 11,
         "categoryId": 2,
         "price": 15.99,
-        "publishedYear": 1913
+        "publishedYear": 1913,
+        "stockCount": 2
     },
     {
         "id": 15,
@@ -132,7 +146,8 @@
         "authorId": 12,
         "categoryId": 2,
         "price": 18.99,
-        "publishedYear": 2020
+        "publishedYear": 2020,
+        "stockCount": 2
     },
     {
         "id": 16,
@@ -141,6 +156,7 @@
         "authorId": 13,
         "categoryId": 2,
         "price": 14.99,
-        "publishedYear": 1992
+        "publishedYear": 1992,
+        "stockCount": 2
     }
 ]

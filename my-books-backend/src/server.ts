@@ -1,8 +1,9 @@
 import express from 'express';
 import http from 'http';
+
 import config from './config/env.js'
 import logger from './config/logger.js';
-import swagger from '../swagger.js';
+import swagger from './swagger.js';
 
 // Routes
 import books from './routes/books.js'

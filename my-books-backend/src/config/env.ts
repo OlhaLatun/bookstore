@@ -14,7 +14,6 @@ const envSchema = z.object({
     FRONTEND_URL: z.string().default('http://localhost:5173')
 })
 
-// Validation
 const result = envSchema.safeParse(process.env);
 
 if (!result.success) {
@@ -27,5 +26,4 @@ if (!result.success) {
     process.exit(1);
 }
 
-// Export validated configuration
 export default Object.freeze(result.data);
